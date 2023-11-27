@@ -31,6 +31,7 @@ resource "google_sql_database_instance" "example" {
   name             = var.sql_instance_name
   database_version = "POSTGRES_15"
   region           = var.gcp_region
+  project          = var.gcp_project_id
 
   settings {
     # Second-generation instance tiers are based on the machine
