@@ -27,24 +27,15 @@ provider "google" {
   alias   = "gcp"
 }
 
-resource "google_sql_database_instance" "example" {
+resource "google_sql_database_instance" "main" {
   name             = var.sql_instance_name
-  database_version = "MYSQL_5_7"
-  project = var.gcp_project_id
-  region  = var.gcp_region
-  deletion_protection = false
+  database_version = "POSTGRES_15"
+  region           = var.gcp_region
 
   settings {
-    tier            = "db-f1-micro"
-    availability_type = "REGIONAL"
-  }
-
-  disk_type = "PD_SSD"
-  disk_size = 10
-
-  database_flags {
-    name  = "tls_version"
-    value = "TLSv1.1"
+    # Second-generation instance tiers are based on the machine
+    # type. See argument reference below.
+    tier = "db-f1-micro"
   }
 }
 
