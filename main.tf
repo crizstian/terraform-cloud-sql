@@ -27,7 +27,7 @@ provider "google" {
   alias   = "gcp"
 }
 
-resource "google_sql_database_instance" "main" {
+resource "google_sql_database_instance" "example" {
   name             = var.sql_instance_name
   database_version = "POSTGRES_15"
   region           = var.gcp_region
